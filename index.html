@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffcb05" />
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+  <meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet" />
+  <title>Smart Keyboard Prototype</title>
+  <link rel="stylesheet" href="styles.css?v=10" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand"><svg class="mtn-logo top-logo"><use href="#mtnLogo"/></svg><span>Smart Keyboard</span></div>
+      <div class="top-actions">
+        <button class="icon-btn" id="restartBtn" aria-label="Restart demo" title="Restart demo"><svg><use href="#refresh"/></svg></button>
+        <button class="profile" aria-label="Profile">PI</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="intro">
+        <div>
+          <span class="eyebrow">Interactive product concept</span>
+          <h1>MTN, wherever you type.</h1>
+          <p>Experience airtime, data and MoMo actions without leaving the conversation.</p>
+        </div>
+        <div class="demo-controls" role="tablist" aria-label="Demo scenarios">
+          <button class="scenario active" data-scenario="data">Gift data</button>
+          <button class="scenario" data-scenario="money">Send money</button>
+          <button class="scenario" data-scenario="airtime">Buy airtime</button>
+          <button class="scenario" data-scenario="ask">Ask MTN</button>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="journey-panel">
+          <div class="panel-heading">
+            <span>LIVE DEMO</span>
+            <span class="secure-pill"><svg><use href="#shield"/></svg>Private prototype</span>
+          </div>
+          <h2 id="journeyTitle">Gift data in seconds</h2>
+          <p id="journeyCopy">A contextual suggestion turns a chat message into a secure MTN transaction.</p>
+          <ol class="steps" id="steps">
+            <li class="active"><span>1</span><div><b>Type naturally</b><small>Use the conversation as normal</small></div></li>
+            <li><span>2</span><div><b>Choose a suggestion</b><small>MTN recognises supported intent</small></div></li>
+            <li><span>3</span><div><b>Review securely</b><small>Confirm recipient and amount</small></div></li>
+            <li><span>4</span><div><b>Authenticate</b><small>Approve with your MTN PIN</small></div></li>
+            <li><span>5</span><div><b>Complete</b><small>Return to the conversation</small></div></li>
+          </ol>
+          <div class="impact-card">
+            <div class="impact-icon"><svg><use href="#bolt"/></svg></div>
+            <div><b>Less friction, more utility</b><p>Shortens a multi-screen journey into one contextual flow.</p></div>
+          </div>
+        </aside>
+
+        <div class="phone-wrap">
+          <div class="app-switcher" aria-label="Preview app">
+            <span>Preview in</span>
+            <button class="app-choice active" data-app="whatsapp"><i class="wa-dot">●</i> WhatsApp</button>
+            <button class="app-choice" data-app="instagram"><i class="ig-dot">◎</i> Instagram</button>
+            <button class="app-choice" data-app="messages"><i class="msg-dot">●</i> Messages</button>
+          </div>
+          <div class="phone">
+            <div class="phone-status"><span>9:41</span><span class="dynamic-island"></span><span class="status-icons">● ◔</span></div>
+            <div class="chat-head" id="chatHead">
+              <button class="back" aria-label="Back">‹</button>
+              <div class="avatar">A</div>
+              <div><b>Ada</b><small id="appStatus">online</small></div>
+              <div class="chat-actions"><svg><use href="#video"/></svg><svg><use href="#phone"/></svg></div>
+            </div>
+            <div class="chat" id="chatArea">
+              <span class="date-chip">Today</span>
+              <div class="bubble incoming" id="incomingBubble">Hi! Please can you send me 2GB? My data just finished 🙏<small>9:38</small></div>
+              <div class="bubble outgoing">Sure, give me a second<small>9:39 ✓✓</small></div>
+              <div class="typing-line"><button class="plus">+</button><div class="message-input" id="messageInput">Type a message</div><button class="mic"><svg><use href="#mic"/></svg></button></div>
+            </div>
+
+            <div class="keyboard" id="keyboard">
+              <div class="smart-bar">
+                <div class="action-scroll" id="actionScroll">
+                  <button class="action-chip primary" data-action="data" aria-label="Gift data" title="Gift data"><svg><use href="#gift"/></svg>Gift 2GB</button>
+                  <button class="action-chip" data-action="airtime" aria-label="Buy airtime" title="Buy airtime"><svg><use href="#signal"/></svg>Data</button>
+                  <button class="action-chip" data-action="money" aria-label="Send with MoMo" title="Send with MoMo"><svg><use href="#wallet"/></svg>MoMo</button>
+                </div>
+                <button class="ask-key" id="askKey"><span>Ask MTN</span></button>
+                <button class="more" id="moreBtn" aria-label="More actions">•••</button>
+              </div>
+              <button class="usage-strip" id="usageStrip">
+                <span class="usage-ring"><i></i><b>64%</b></span>
+                <span class="usage-copy"><b>12.8GB remaining</b><small>Likely to last 9 days</small></span>
+                <span class="usage-trend">Today&nbsp; 1.2GB <b>›</b></span>
+              </button>
+              <div class="suggestion-note"><span class="pulse"></span><span id="suggestionText">Suggested from your message · processed on device</span></div>
+              <div class="keys" id="keys"></div>
+              <div class="keyboard-bottom"><button class="utility-text">123</button><button class="utility-icon" aria-label="Change language"><svg><use href="#globe"/></svg></button><button class="utility-icon" aria-label="Voice typing"><svg><use href="#mic"/></svg></button><button class="space"><svg class="mtn-logo space-logo"><use href="#mtnLogo"/></svg></button><button class="utility-text">return</button></div>
+              <div class="home-indicator"></div>
+            </div>
+
+            <div class="sheet-backdrop" id="backdrop"></div>
+            <section class="transaction-sheet" id="transactionSheet" aria-modal="true" role="dialog">
+              <div class="grabber"></div>
+              <button class="sheet-close" id="sheetClose" aria-label="Close">×</button>
+              <div id="sheetContent"></div>
+            </section>
+            <div class="toast" id="toast"><svg><use href="#check"/></svg><span>Transaction complete</span></div>
+          </div>
+          <div class="try-hint"><svg><use href="#pointer"/></svg><span>Choose a scenario, then tap the highlighted action</span></div>
+        </div>
+
+        <aside class="detail-panel">
+          <div class="balance-card">
+            <span>CONNECTED ACCOUNT</span>
+            <div class="line"><div><small>MTN line</small><b>0803 123 4567</b></div><span class="verified"><svg><use href="#check"/></svg></span></div>
+            <div class="balances"><div><small>Airtime</small><b>₦8,450.00</b></div><div><small>Data</small><b>12.8 GB</b></div></div>
+          </div>
+          <h3>What this demonstrates</h3>
+          <div class="feature-list" id="featureList">
+            <div><svg><use href="#context"/></svg><div><b>Contextual intent</b><p>Recognises “send me 2GB” locally and proposes the right action.</p></div></div>
+            <div><svg><use href="#lock"/></svg><div><b>Secure handoff</b><p>Transactions require explicit review and authentication.</p></div></div>
+            <div><svg><use href="#eyeoff"/></svg><div><b>Privacy by design</b><p>Typed content is not stored or used for advertising.</p></div></div>
+          </div>
+          <button class="privacy-link" id="privacyBtn"><svg><use href="#shield"/></svg>View privacy controls <span>›</span></button>
+          <div class="prototype-note"><b>Prototype mode</b><p>All balances, contacts and transactions are simulated. No real MTN or MoMo systems are connected.</p></div>
+        </aside>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+  <section class="privacy-modal" id="privacyModal" role="dialog" aria-modal="true" aria-labelledby="privacyTitle">
+    <button class="sheet-close" id="privacyClose" aria-label="Close">×</button>
+    <span class="modal-icon"><svg><use href="#shield"/></svg></span>
+    <h2 id="privacyTitle">Privacy is built in</h2>
+    <p>The keyboard only detects supported MTN actions with your permission. Sensitive fields are never read.</p>
+    <label><span><b>Contextual suggestions</b><small>Detect supported actions on this device</small></span><input type="checkbox" checked><i></i></label>
+    <label><span><b>Personalised offers</b><small>Use my MTN account activity for relevant offers</small></span><input type="checkbox"><i></i></label>
+    <label><span><b>Usage analytics</b><small>Share anonymous feature interactions</small></span><input type="checkbox" checked><i></i></label>
+    <div class="privacy-facts"><span><svg><use href="#lock"/></svg>No keystroke storage</span><span><svg><use href="#device"/></svg>On-device detection</span></div>
+    <button class="yellow-btn" id="savePrivacy">Save preferences</button>
+  </section>
+
+  <svg aria-hidden="true" class="svg-defs"><defs>
+    <symbol id="mtnLogo" viewBox="0 0 100 54"><ellipse cx="50" cy="27" rx="45" ry="22" fill="#ffcb05" stroke="#111" stroke-width="4"/><text x="50" y="35" text-anchor="middle" fill="#111" font-size="24" font-family="Arial,sans-serif" font-weight="900">MTN</text></symbol>
+    <symbol id="globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 4 6 4 9s-1 6-4 9c-3-3-4-6-4-9s1-6 4-9z"/></symbol>
+    <symbol id="refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 10-2.3 5.7M20 4v7h-7"/></symbol>
+    <symbol id="shield" viewBox="0 0 24 24"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6l7-3z"/><path d="M9 12l2 2 4-5"/></symbol>
+    <symbol id="gift" viewBox="0 0 24 24"><path d="M4 10h16v11H4zM2 6h20v4H2zM12 6v15"/><path d="M12 6c-3 0-5-1-5-3 3-1 5 0 5 3zm0 0c3 0 5-1 5-3-3-1-5 0-5 3z"/></symbol>
+    <symbol id="wallet" viewBox="0 0 24 24"><path d="M3 6h15a2 2 0 012 2v11H5a2 2 0 01-2-2V6z"/><path d="M3 6l3-3h12v3M15 11h7v5h-7a2.5 2.5 0 010-5z"/></symbol>
+    <symbol id="signal" viewBox="0 0 24 24"><path d="M5 19v-4M10 19v-8M15 19V7M20 19V3"/></symbol>
+    <symbol id="spark" viewBox="0 0 24 24"><path d="M12 2l1.5 5.5L19 9l-5.5 1.5L12 16l-1.5-5.5L5 9l5.5-1.5L12 2zM19 16l.8 2.2L22 19l-2.2.8L19 22l-.8-2.2L16 19l2.2-.8L19 16z"/></symbol>
+    <symbol id="bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></symbol>
+    <symbol id="check" viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></symbol>
+    <symbol id="lock" viewBox="0 0 24 24"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></symbol>
+    <symbol id="eyeoff" viewBox="0 0 24 24"><path d="M3 3l18 18M10.5 10.7a2 2 0 002.8 2.8M9.5 5.3A11 11 0 0121 12a13 13 0 01-3 3.8M6.5 6.5A14 14 0 003 12a12 12 0 005.5 5.3"/></symbol>
+    <symbol id="context" viewBox="0 0 24 24"><path d="M4 5h16v12H8l-4 4V5z"/><path d="M8 9h8M8 13h5"/></symbol>
+    <symbol id="video" viewBox="0 0 24 24"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></symbol>
+    <symbol id="phone" viewBox="0 0 24 24"><path d="M6 3l4 4-2 3a16 16 0 006 6l3-2 4 4-2 3C10 21 3 14 3 5l3-2z"/></symbol>
+    <symbol id="mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0014 0M12 18v3M9 21h6"/></symbol>
+    <symbol id="pointer" viewBox="0 0 24 24"><path d="M8 3l9 9-5 1 3 6-3 1-3-6-4 4L8 3z"/></symbol>
+    <symbol id="device" viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></symbol>
+  </defs></svg>
+  <script src="app.js?v=7"></script>
+</body>
+</html>
